@@ -12,11 +12,9 @@ def borrow_book(title):
         if book["title"] == title:
             if book["availability"]:
                 book["availability"] = False
-                print(f"'{title}' has been borrowed.")
+                return True
             else:
-                print(f"'{title}' is not available.")
-            return
-    print(f"'{title}' is not found in the library.")
+                return False
 
 
 def return_book(title):
@@ -24,11 +22,9 @@ def return_book(title):
         if book["title"] == title:
             if not book["availability"]:
                 book["availability"] = True
-                print(f"'{title}' has been returned.")
+                return True
             else:
-                print(f"'{title}' is already available in the library.")
-            return
-    print(f"'{title}' is not found in the library.")
+                return False
 
 
 def find_book(title):
@@ -36,3 +32,9 @@ def find_book(title):
         if book["title"] == title:
             return book
     return None
+
+def display_books():
+    titles = []
+    for book in library_books:
+        titles.append(library_books[book][0])
+    return titles
